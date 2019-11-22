@@ -1,0 +1,16 @@
+products:
+  - id: 1
+    title: 'Synergistic Iron Watch'
+    manufacturer: 'Wolff and Sons'
+  - id: 2
+    title: 'Intelligent Granite Table'
+    manufacturer: 'Hills Group'
+units:
+  - product_id: 1
+    status: 'active'
+    condition: 'new'
+    price_cents: 999
+  - product_id: 1
+    status: 'inactive'
+    condition: 'used'
+    price_cents: 899
