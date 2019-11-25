@@ -1,20 +1,22 @@
 # README
 
-* Ruby version
-ruby-2.5.5
+Ruby version
+<pre>ruby-2.5.5</pre>
 
-* Configuration
-bundle install
+Configuration
+<pre>bundle install</pre>
 
-* Database creation
+Database creation
+<pre>
 bundle exec rake db:create
 bundle exec rake db:migrate
+</pre>
 
-* Database initialization
-bundle exec rake db:seed
+Database initialization
+<pre>bundle exec rake db:seed</pre>
 
-* How to run the test suite
-bundle exec rspec
+How to run the test suite
+<pre>bundle exec rspec</pre>
 
-* Deployment instructions
-bundle exec rails s
+Deployment instructions
+<pre>bundle exec rails s</pre>
