@@ -1,4 +1,20 @@
 # README
+- [Setup](#setup)
+- [Database Tables](#database-tables)
+	* [Product](#product-table)
+	* [Unit](#unit-table)
+- [API](#api)
+	* [Products](#products)
+		* [GET /products](#get-products)
+		* [GET /products/:id](#get-productsid)
+		* [GET /products/:id/units](#get-productsidunits)
+		* [POST /products](#post-products)
+		* [PUT /products](#put-productsid)
+	* [Units](#units)
+		* [GET /units](#get-units)
+		* [POST /units](#post-units)
+
+----
 
 ## Setup
 Ruby version
@@ -22,7 +38,10 @@ How to run the test suite
 Deployment instructions
 <pre>bundle exec rails s</pre>
 
+----
+
 ## Database Tables
+### Product Table
 <pre>
 Product Table
 - has many Units
@@ -31,6 +50,8 @@ Fields:
 title - required; must not be blank
 manufacturer - required; must not be blank
 </pre>
+
+### Unit Table
 <pre>
 Unit Table
 - belongs to Product
@@ -42,7 +63,10 @@ condition - required; either "new" or "used"
 price_cents - must be greater than 0
 </pre>
 
-## API
+----
+
+# API
+## Products
 ### GET /products
 <pre>
 [
@@ -113,6 +137,7 @@ price_cents - must be greater than 0
 200 OK
 </pre>
 
+## Units
 ### GET /units
 <pre>
 [
