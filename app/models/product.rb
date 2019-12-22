@@ -16,6 +16,6 @@
 class Product < ApplicationRecord
   has_many :units, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :manufacturer }
   validates :manufacturer, presence: true
 end

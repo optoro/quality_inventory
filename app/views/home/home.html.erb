@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quality Inventory</title>
+  </head>
+  <style>
+    pre.code {
+      background-color: lightgray;
+      border-style: solid;
+      border-width: 2px;
+      padding: 10px;    }
+
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
+<body>
+  <h1>Welcome!</h1>
+
+  <p>The <a href="https://github.com/optoro/quality_inventory";>quality_inventory API</a> is an application that allows a consumer to view product and unit records from the quality_inventory database in json format.</p>
+  <ul>
+    <li>The <b>PRODUCT</b> table includes <i>id</i>, <i>title</i> and <i>manufacturer</i> fields. It has a one-to-many relationship with the <b>UNIT</b> table.</li>
+    <li>The <b>UNIT</b> table includes <i>id</i>, <i>status</i>, <i>condition</i>, <i>price_cents</i> and <i>product_id</i> fields.</li>
+  </ul>
+
+  <p>Please explore the following endpoints and write test scenarios for each in gherkin.</p>
+  <ol>
+    <li><b>GET</b> <i>/products/:id/units</i> endpoint for retrieving a product and all of its units.</li>
+    <li><b>POST</b> <i>/products</i> endpoint for creating a new product record.</li>
+    <li>Bonus: <b>POST</b> <i>/units</i> endpoint for creating a new unit record.</li>
+  </ol>
+
+  <p>You can find a quick tutorial/refresher on gherkin <a href="https://cucumber.io/docs/gherkin/reference";>here</a>.</p>
+
+  <p>Feel free to include additional levels of details and assumptions you made when writing your test scenarios. You may also add a list of questions you might have for PMs, designers, or developers.</p>
+
+  <hr>
+
+  <h2>API Documentation</h2>
+    <h3>PRODUCTS</h3>
+    <ul>
+      <li><h4>GET /products</h4>
+<pre class="code">
+STATUS
+  200 OK
+
+RESPONSE BODY
+  [
+      {
+          "id": 1,
+          "title": "Synergistic Iron Watch",
+          "manufacturer": "Wolff and Sons"
+      },
+      {
+          "id": 2,
+          "title": "Intelligent Granite Table",
+          "manufacturer": "Hills Group"
+      }
+  ]
+</pre>
+      </li>
+      <li><h4>GET /products/:id</h4>
+<pre class="code">
+STATUS
+  200 OK
+
+RESPONSE BODY
+  {
+      "id": 1,
+      "title": "Synergistic Iron Watch",
+      "manufacturer": "Wolff and Sons"
+  }
+</pre>
+      </li>
+      <li><h4>GET /products/:id/units</h4>
+<pre class="code">
+STATUS
+  200 OK
+
+RESPONSE BODY
+  {
+      "id": 1,
+      "title": "Synergistic Iron Watch",
+      "manufacturer": "Wolff and Sons",
+      "units": [
+          {
+              "id": 1,
+              "status": "active",
+              "condition": "new",
+              "price_cents": 999,
+              "product_id": 1
+          },
+          {
+              "id": 2,
+              "status": "inactive",
+              "condition": "used",
+              "price_cents": 899,
+              "product_id": 1
+          }
+      ]
+  }
+</pre>
+      </li>
+      <li><h4>POST /products</h4>
+<pre class="code">
+HEADERS
+  Content-Type: application/json
+
+REQUEST BODY
+  {
+      "title": "fake title",
+      "manufacturer": "fake manufacturer"
+  }
+
+STATUS
+  201 Created
+
+RESPONSE BODY
+  {
+      "id": 3,
+      "title": "fake title",
+      "manufacturer": "fake manufacturer",
+      "created_at": "2019-12-22T20:24:54.039Z",
+      "updated_at": "2019-12-22T20:24:54.039Z"
+  }
+</pre>
+      </li>
+      <li><h4>PUT /products/:id</h4>
+<pre class="code">
+HEADERS
+  Content-Type: application/json
+
+REQUEST BODY
+  {
+      "title": "fake titles",
+      "manufacturer": "fake manufacturers"
+  }
+
+STATUS
+  200 OK
+
+RESPONSE BODY
+  {
+      "id": 3,
+      "title": "fake titles",
+      "manufacturer": "fake manufacturers",
+      "created_at": "2019-11-25T15:34:34.287Z",
+      "updated_at": "2019-12-22T20:09:39.292Z"
+  }
+</pre>
+      </li>
+    </ul>
+
+    <h3>UNITS</h3>
+    <ul>
+      <li><h4>GET /units</h4>
+<pre class="code">
+STATUS
+  200 OK
+
+RESPONSE BODY
+  [
+      {
+          "id": 1,
+          "status": "active",
+          "condition": "new",
+          "price_cents": 999,
+          "product_id": 1
+      },
+      {
+          "id": 2,
+          "status": "inactive",
+          "condition": "used",
+          "price_cents": 899,
+          "product_id": 1
+      }
+  ]
+</pre>
+      </li>
+      <li><h4>POST /units</h4>
+<pre class="code">
+HEADERS
+  Content-Type: application/json
+
+REQUEST BODY
+  {
+      "product_id": 1,
+      "status": "active",
+      "condition": "new",
+      "price_cents": 999
+  }
+
+STATUS
+  201 Created
+
+RESPONSE BODY
+  {
+      "id": 3,
+      "status": "active",
+      "condition": "new",
+      "price_cents": 999,
+      "product_id": 1,
+      "created_at": "2019-12-22T20:11:19.972Z",
+      "updated_at": "2019-12-22T20:11:19.972Z"
+  }
+</pre>
+      </li>
+    </ul>
+</body>
+</html>

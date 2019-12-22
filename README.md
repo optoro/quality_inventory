@@ -71,12 +71,14 @@ price_cents - must be greater than 0
 <pre>
 [
     {
+        "id": 1,
         "title": "Synergistic Iron Watch",
         "manufacturer": "Wolff and Sons"
     },
     {
-        "title": "Intelligent Granite Table",
-        "manufacturer": "Hills Group"
+        "id": 2,
+        "title": "fake titles",
+        "manufacturer": "fake manufacturers"
     }
 ]
 
@@ -86,6 +88,7 @@ price_cents - must be greater than 0
 ### GET /products/:id
 <pre>
 {
+    "id": 1,
     "title": "Synergistic Iron Watch",
     "manufacturer": "Wolff and Sons"
 }
@@ -96,20 +99,23 @@ price_cents - must be greater than 0
 ### GET /products/:id/units
 <pre>
 {
+    "id": 1,
     "title": "Synergistic Iron Watch",
     "manufacturer": "Wolff and Sons",
     "units": [
         {
-            "product_id": 1,
+            "id": 1,
             "status": "active",
             "condition": "new",
-            "price_cents": 999
+            "price_cents": 999,
+            "product_id": 1
         },
         {
-            "product_id": 1,
+            "id": 2,
             "status": "inactive",
             "condition": "used",
-            "price_cents": 899
+            "price_cents": 899,
+            "product_id": 1
         }
     ]
 }
@@ -119,9 +125,11 @@ price_cents - must be greater than 0
 
 ### POST /products
 <pre>
+HEADERS Content-Type: application/json
+REQUEST BODY
 {
-	"title": "fake title",
-	"manufacturer": "fake manufacturer"
+    "title": "fake title",
+    "manufacturer": "fake manufacturer"
 }
 
 201 Created
@@ -129,9 +137,11 @@ price_cents - must be greater than 0
 
 ### PUT /products/:id
 <pre>
+HEADERS Content-Type: application/json
+REQUEST BODY
 {
-	"title": "fake title",
-	"manufacturer": "fake manufacturer"
+    "title": "fake title",
+    "manufacturer": "fake manufacturer"
 }
 
 200 OK
@@ -142,16 +152,18 @@ price_cents - must be greater than 0
 <pre>
 [
     {
-        "product_id": 1,
+        "id": 1,
         "status": "active",
         "condition": "new",
-        "price_cents": 999
+        "price_cents": 999,
+        "product_id": 1
     },
     {
-        "product_id": 1,
+        "id": 2,
         "status": "inactive",
         "condition": "used",
-        "price_cents": 899
+        "price_cents": 899,
+        "product_id": 1
     }
 ]
 
@@ -160,11 +172,14 @@ price_cents - must be greater than 0
 
 ### POST /units
 <pre>
+HEADERS Content-Type: application/json
+REQUEST BODY
 {
-    "product_id": 1,
+    "id": 1,
     "status": "active",
     "condition": "new",
-    "price_cents": 999
+    "price_cents": 999,
+    "product_id": 1
 }
 
 201 Created
