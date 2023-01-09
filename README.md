@@ -1,5 +1,4 @@
 # README
-- [Heroku](#heroku)
 - [Setup](#setup)
 - [Database Tables](#database-tables)
 	* [Product](#product-table)
@@ -16,9 +15,6 @@
 		* [POST /units](#post-units)
 
 ----
-
-## Heroku
-https://quality-inventory.herokuapp.com
 
 ## Setup
 Ruby version
